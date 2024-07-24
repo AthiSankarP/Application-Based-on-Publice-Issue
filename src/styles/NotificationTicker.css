@@ -1,0 +1,30 @@
+.ticker {
+    width: 100%;
+    height: 40px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .ticker-content {
+    display: flex;
+    white-space: nowrap;
+    animation: ticker 20s linear infinite; /* Adjust duration based on content length */
+  }
+  
+  .ticker p {
+    margin: 0;
+    padding: 10px;
+    font-size: 1rem;
+    color: #333;
+    display: inline-block;
+  }
+  
+  /* Adjust the duration so that it matches the content width */
+  @keyframes ticker {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+  

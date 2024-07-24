@@ -1,12 +1,11 @@
-// src/components/DashboardComponent.js
 import React, { useState, useEffect } from 'react';
 import AppBarComponent from './AppBarComponent';
-import IssueCardsContainer from './IssueCardsContainer'; // Import IssueCardsContainer
+import IssueCardsContainer from './IssueCardsContainer';
+import NotificationTicker from './NotificationTicker';
 import "../styles/Dashboard.css";
 import { Bar, Pie, Line } from 'react-chartjs-2';
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, ArcElement, LineElement, PointElement } from 'chart.js';
 
-// Register the ChartJS components
 ChartJS.register(
   Title,
   Tooltip,
@@ -19,7 +18,6 @@ ChartJS.register(
   PointElement
 );
 
-// Function to generate random data for demo purposes
 const generateRandomData = () => Math.floor(Math.random() * 100);
 
 const initialIssueData = {
@@ -55,55 +53,59 @@ const initialTrendData = {
   }],
 };
 
-const animationOptions = {
-  animation: {
-    duration: 1000,
-    easing: 'easeInOutQuad',
-  },
-};
-
 function DashboardComponent() {
-  const [filter, setFilter] = useState('all'); // Define the filter state
+  const [filter, setFilter] = useState('all');
   const [issueChartData, setIssueChartData] = useState(initialIssueData);
   const [categoryChartData, setCategoryChartData] = useState(initialCategoryData);
   const [trendChartData, setTrendChartData] = useState(initialTrendData);
+  const [animationDuration, setAnimationDuration] = useState(2000); // Animation duration state
 
   useEffect(() => {
     const interval = setInterval(() => {
       setIssueChartData({
-        ...initialIssueData,
+        labels: initialIssueData.labels,
         datasets: [{
           ...initialIssueData.datasets[0],
           data: [generateRandomData(), generateRandomData(), generateRandomData()],
         }],
       });
-
+  
       setCategoryChartData({
-        ...initialCategoryData,
+        labels: initialCategoryData.labels,
         datasets: [{
           ...initialCategoryData.datasets[0],
           data: [generateRandomData(), generateRandomData(), generateRandomData()],
         }],
       });
-
+  
       setTrendChartData({
-        ...initialTrendData,
+        labels: initialTrendData.labels,
         datasets: [{
           ...initialTrendData.datasets[0],
           data: [generateRandomData(), generateRandomData(), generateRandomData(), generateRandomData(), generateRandomData(), generateRandomData()],
         }],
       });
-    }, 1000);
+    }, 10000);
+  
+    return () => clearInterval(interval);
+  }, []);
 
-    const timeout = setTimeout(() => {
-      clearInterval(interval);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAnimationDuration(0); // Disable animation after 2 seconds
     }, 2000);
 
-    return () => {
-      clearInterval(interval);
-      clearTimeout(timeout);
-    };
+    return () => clearTimeout(timer);
   }, []);
+
+  const chartOptions = {
+    animation: {
+      duration: animationDuration, // Control animation duration based on state
+      easing: 'easeInOutQuad',
+    },
+    responsive: true,
+    maintainAspectRatio: false,
+  };
 
   return (
     <div className="dashboard-container">
@@ -117,8 +119,8 @@ function DashboardComponent() {
             className="search-bar"
           />
           <select
-            value={filter} // Use the filter state
-            onChange={(e) => setFilter(e.target.value)} // Update filter state
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
             className="filter-dropdown"
           >
             <option value="all">All Issues</option>
@@ -132,33 +134,30 @@ function DashboardComponent() {
           <div className="stats-bar">
             <h3>Issue Status</h3>
             <div className="bar-chart">
-              <Bar data={issueChartData} options={{ ...animationOptions, responsive: true, maintainAspectRatio: false }} />
+              <Bar data={issueChartData} options={chartOptions} />
             </div>
           </div>
           <div className="stats-bar">
             <h3>Issue Categories</h3>
             <div className="pie-chart">
-              <Pie data={categoryChartData} options={{ ...animationOptions, responsive: true, maintainAspectRatio: false }} />
+              <Pie data={categoryChartData} options={chartOptions} />
             </div>
           </div>
           <div className="stats-bar">
             <h3>Issues Over Time</h3>
             <div className="line-chart">
-              <Line data={trendChartData} options={{ ...animationOptions, responsive: true, maintainAspectRatio: false }} />
+              <Line data={trendChartData} options={chartOptions} />
             </div>
           </div>
         </div>
 
         <div className="issue-cards-section">
           <h3>Issue Types</h3>
-          <IssueCardsContainer /> {/* Use IssueCardsContainer here */}
+          <IssueCardsContainer />
         </div>
         
-        <div className="notifications">
-          <h3>Notifications</h3>
-          <p>No new notifications</p>
-        </div>
-        
+        <NotificationTicker />
+
         <div className="dashboard-links">
           <a href="/issues" className="dashboard-link">View All Issues</a>
           <a href="/report" className="dashboard-link">Report an Issue</a>
