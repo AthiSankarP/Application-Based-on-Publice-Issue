@@ -1,0 +1,86 @@
+/* src/styles/Dashboard.css */
+.dashboard-container {
+  font-family: Arial, sans-serif;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.btn-join {
+  margin-left: 10px;
+}
+
+.language-selector {
+  margin-left: 10px;
+}
+
+.dashboard-content {
+  padding: 20px;
+}
+
+.stats-bars {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stats-bar {
+  flex: 1;
+  margin: 10px;
+}
+
+.bar-chart, .pie-chart {
+  height: 300px;
+}
+
+.recent-issues {
+  margin-top: 20px;
+}
+
+.issue-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.issue-item {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.issue-item img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.issue-details {
+  max-width: 500px;
+}
+
+.dashboard-links {
+  margin-top: 20px;
+}
+
+.dashboard-link {
+  display: inline-block;
+  margin-right: 10px;
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}

@@ -1,0 +1,31 @@
+/* src/styles/AppBar.css */
+.appbar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+  }
+  
+  .appbar-logo h1 {
+    margin: 0;
+  }
+  
+  .appbar-dropdowns select {
+    margin-left: 10px;
+    padding: 5px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .btn-join {
+    margin-left: 10px;
+  }
+  
