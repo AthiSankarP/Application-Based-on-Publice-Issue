@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import "../styles/Dashboard.css";
+import "../styles/Dashboard.css"; // Make sure this path is correct
 
 const IssueCard = ({ imageSrc, issueLink, issueTitle, issueDescription }) => {
   return (

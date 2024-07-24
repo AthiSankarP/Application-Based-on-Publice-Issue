@@ -1,11 +1,10 @@
 // src/components/DashboardComponent.js
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import AppBarComponent from './AppBarComponent';
+import IssueCardsContainer from './IssueCardsContainer'; // Import IssueCardsContainer
 import "../styles/Dashboard.css";
 import { Bar, Pie, Line } from 'react-chartjs-2';
 import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, ArcElement, LineElement, PointElement } from 'chart.js';
-import AppBarComponent from "./AppBarComponent";
-import IssueCard from './IssueCard';
 
 // Register the ChartJS components
 ChartJS.register(
@@ -64,10 +63,10 @@ const animationOptions = {
 };
 
 function DashboardComponent() {
+  const [filter, setFilter] = useState('all'); // Define the filter state
   const [issueChartData, setIssueChartData] = useState(initialIssueData);
   const [categoryChartData, setCategoryChartData] = useState(initialCategoryData);
   const [trendChartData, setTrendChartData] = useState(initialTrendData);
-  const [filter, setFilter] = useState('all');
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -118,8 +117,8 @@ function DashboardComponent() {
             className="search-bar"
           />
           <select
-            value={filter}
-            onChange={(e) => setFilter(e.target.value)}
+            value={filter} // Use the filter state
+            onChange={(e) => setFilter(e.target.value)} // Update filter state
             className="filter-dropdown"
           >
             <option value="all">All Issues</option>
@@ -150,9 +149,9 @@ function DashboardComponent() {
           </div>
         </div>
 
-        <div className="recent-issues">
-          <h3>Recent Issues</h3>
-          <IssueCard />
+        <div className="issue-cards-section">
+          <h3>Issue Types</h3>
+          <IssueCardsContainer /> {/* Use IssueCardsContainer here */}
         </div>
         
         <div className="notifications">
@@ -161,8 +160,8 @@ function DashboardComponent() {
         </div>
         
         <div className="dashboard-links">
-          <Link to="/issues" className="dashboard-link">View All Issues</Link>
-          <Link to="/report" className="dashboard-link">Report an Issue</Link>
+          <a href="/issues" className="dashboard-link">View All Issues</a>
+          <a href="/report" className="dashboard-link">Report an Issue</a>
         </div>
       </div>
     </div>
