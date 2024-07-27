@@ -20,7 +20,7 @@ const tamilNaduData = {
     Erode: ["Erode", "Bhavani", "Perundurai"],
     Kallakurichi: ["Kallakurichi", "Vikravandi", "Rishivandiyam"],
     Kancheepuram: ["Kancheepuram", "Tambaram", "Sriperumbudur"],
-    Kanyakumari: ["Nagercoil", "Kanyakumari", "Vadasery"],
+    Kanyakumari: ["Nagercoil", "Kanyakumari", "Marthandam"],
     Karur: ["Karur", "Kongu", "Pallapatti"],
     Krishnagiri: ["Krishnagiri", "Hosur", "Natrampalli"],
     Madurai: ["Madurai", "Tirumangalam", "Thiruparankundram"],
