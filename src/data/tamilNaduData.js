@@ -7,7 +7,7 @@ const tamilNaduData = {
     "Ranipet", "Salem", "Sivaganga", "Tenkasi", "Thanjavur",
     "Theni", "Thoothukudi", "Tiruchirappalli", "Tirunelveli", "Tirupathur",
     "Tiruppur", "Tiruvallur", "Tiruvannamalai", "Tiruvarur", "Vellore",
-    "Viluppuram", "Virudhunagar"
+    "Viluppuram"
   ],
   places: {
     Ariyalur: ["Jayankondam", "Udayarpalayam", "Tittakudi"],
