@@ -155,9 +155,8 @@ function DashboardComponent() {
           <h3>Issue Types</h3>
           <IssueCardsContainer />
         </div>
-        
+        {/* saaaad */}
         <NotificationTicker />
-
         <div className="dashboard-links">
           <a href="/issues" className="dashboard-link">View All Issues</a>
           <a href="/report" className="dashboard-link">Report an Issue</a>
